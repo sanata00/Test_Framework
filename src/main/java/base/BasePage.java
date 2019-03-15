@@ -14,14 +14,6 @@ public class BasePage {
         this.driver = driver;
     }
 
-    public void sendKeys(By locator, String text) {
-        driver.findElement(locator).sendKeys(text);
-    }
-
-    public void click(By locator) {
-        driver.findElement(locator).click();
-    }
-
     protected boolean isElementPresent(By locator) {
         try {
             driver.findElement(locator);

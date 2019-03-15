@@ -12,11 +12,7 @@ public class BaseTest {
 
     @BeforeSuite
     public void start() {
-        try {
-            admin = new Administration();
-        } catch (Exception e) {
-            admin.quit();
-        }
+        admin = new Administration();
     }
 
     @AfterSuite
