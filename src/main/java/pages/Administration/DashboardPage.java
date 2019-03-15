@@ -12,7 +12,7 @@ public class DashboardPage extends BasePage {
         super(driver);
     }
 
-    public final By DIV_MAIN = get("admin.dash.main");
+    private final By DIV_MAIN = get("admin.dash.main");
 
     private final String url = "https://www.phptravels.net/admin";
     private final String title = "Dashboard";

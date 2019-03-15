@@ -1,0 +1,9 @@
+<tests>
+    <test name="canLogin">
+        <email value="admin@phptravels.com"/>
+        <password value="demoadmin"/>
+    </test>
+    <test name="searchForCar">
+        <carName value="Ford Mondeo 2012"/>
+    </test>
+</tests>

@@ -2,7 +2,6 @@ package applications;
 
 import base.BaseApplication;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
 import pages.Administration.DashboardPage;
 import pages.Administration.ItemsManagementPage;
 import pages.Administration.LoginPage;
