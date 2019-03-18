@@ -6,4 +6,12 @@
     <test name="searchForCar">
         <carName value="Ford Mondeo 2012"/>
     </test>
+    <test name="isCarExtraItemCorrect">
+        <carExtra>
+            <name value="Additional Driver"/>
+            <status value="Yes"/>
+            <price value="25"/>
+        </carExtra>
+        <someTestData value="helloWorld"/>
+    </test>
 </tests>

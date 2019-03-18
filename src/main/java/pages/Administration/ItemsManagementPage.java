@@ -15,18 +15,19 @@ public class ItemsManagementPage extends BasePage {
         super(driver);
     }
 
-    public final int NAME_COLUMN = 5;
+    private final int CAR_NAME_COLUMN = 5;
+    private final int CAR_EXTRA_NAME_COLUMN = 4;
 
     private final By SEARCH_BUTTON = get("admin.management.searchButton");
     private final By SEARCH_INPUT = get("admin.management.searchInput");
     private final By GO_BUTTON = get("admin.management.go");
-    private final By SEARCH_RESULTS = get("admin.management.results"); //array of TRs
+    private final By ITEMS = get("admin.management.items"); //array of TRs
     private final By BENCHMARK_TIME = get("admin.management.benchmarkTime");
 
     public boolean isInNameColumn(String value) {
-        List<WebElement> lines = driver.findElements(SEARCH_RESULTS);
+        List<WebElement> lines = driver.findElements(ITEMS);
         for (WebElement line : lines) {
-            String name = line.findElement(By.cssSelector("td:nth-child(5)")).getText();
+            String name = line.findElement(By.cssSelector("td:nth-child(" + CAR_NAME_COLUMN + ")")).getText();
             if (name.equals(value)) {
                 return true;
             }
@@ -59,4 +60,18 @@ public class ItemsManagementPage extends BasePage {
         return driver.findElement(BENCHMARK_TIME).getText();
     }
 
+    public void clickViewButton(String name) {
+        boolean isClicked = false;
+        List<WebElement> lines = driver.findElements(ITEMS);
+        for (WebElement line : lines) {
+            String currentName = line.findElement(By.cssSelector("td:nth-child(" + CAR_EXTRA_NAME_COLUMN + ")")).getText();
+            if (currentName.equals(name)) {
+                line.findElement(By.cssSelector("a[title=View]")).click();
+                isClicked = true;
+            }
+        }
+        if (!isClicked) {
+            throw new IllegalArgumentException("Couldn't find a name '" + name + "'.");
+        }
+    }
 }

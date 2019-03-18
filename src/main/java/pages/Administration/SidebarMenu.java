@@ -14,6 +14,7 @@ public class SidebarMenu extends BasePage {
 
     private final By CARS_MENU = get("admin.menu.cars");
     private final By CARS_CARS_SUBMENU = get("admin.menu.cars.cars");
+    private final By CARS_EXTRAS_SUBMENU = get("admin.menu.cars.extras");
 
     public void expandCarsMenu() {
         driver.findElement(CARS_MENU).click();
@@ -22,6 +23,8 @@ public class SidebarMenu extends BasePage {
     public void openSubmenuOfCars(String submenu) {
         if (submenu.equals("CARS")) {
             driver.findElement(CARS_CARS_SUBMENU).click();
+        } else if (submenu.equals("EXTRAS")) {
+            driver.findElement(CARS_EXTRAS_SUBMENU).click();
         } else {
             throw new IllegalArgumentException("No such CARS submenu:" + submenu);
         }

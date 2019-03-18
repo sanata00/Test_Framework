@@ -1,11 +1,12 @@
 package applications;
 
 import base.BaseApplication;
+import models.CarExtra;
 import org.openqa.selenium.TimeoutException;
-import pages.Administration.DashboardPage;
-import pages.Administration.ItemsManagementPage;
-import pages.Administration.LoginPage;
-import pages.Administration.SidebarMenu;
+import org.testng.Assert;
+import pages.Administration.*;
+
+import static org.testng.AssertJUnit.assertEquals;
 
 public class Administration extends BaseApplication {
 
@@ -13,12 +14,14 @@ public class Administration extends BaseApplication {
     public DashboardPage dashboardPage;
     public SidebarMenu sidebarMenu;
     public ItemsManagementPage itemsManagementPage;
+    public CarExtraPage carExtraPage;
 
     public Administration() {
         loginPage = new LoginPage(super.driver);
         dashboardPage = new DashboardPage(super.driver);
         sidebarMenu = new SidebarMenu(super.driver);
         itemsManagementPage = new ItemsManagementPage(super.driver);
+        carExtraPage = new CarExtraPage(super.driver);
     }
 
     public void login(String email, String password) {
@@ -54,6 +57,25 @@ public class Administration extends BaseApplication {
             }
         }
         throw new TimeoutException("The results were not loaded");
+    }
+
+    public void viewItem(CarExtra carExtra) {
+        String name = carExtra.getName();
+        itemsManagementPage.clickViewButton(name);
+    }
+
+    public boolean isCarExtraItemCorrect(CarExtra carExtra) {
+        boolean isCorrect = true;
+        if (!carExtra.getName().equals(carExtraPage.getName())){
+            isCorrect = false;
+        }
+        if (!carExtra.getStatus().equals(carExtraPage.getStatus())){
+            isCorrect = false;
+        }
+        if (!carExtra.getPrice().equals(carExtraPage.getPrice())){
+            isCorrect = false;
+        }
+        return isCorrect;
     }
 
 }
