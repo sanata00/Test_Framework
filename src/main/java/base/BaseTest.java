@@ -8,12 +8,12 @@ public class BaseTest {
 
     protected Administration admin;
 
-    @BeforeSuite
+    @BeforeSuite (alwaysRun = true)
     public void start() {
         admin = new Administration();
     }
 
-    @AfterSuite
+    @AfterSuite (alwaysRun = true)
     public void finish() {
         admin.quit();
     }

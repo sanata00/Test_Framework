@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="regression">
+    <groups>
+        <run>
+            <include name="group1"/>
+        </run>
+    </groups>
+    <parameter name="email" value="admin@phptravels.com"/>
+    <parameter name="password" value="demoadmin"/>
+    <test name="administration">
+        <classes>
+            <class name="tests.AdminTests" />
+        </classes>
+    </test>
+</suite>
