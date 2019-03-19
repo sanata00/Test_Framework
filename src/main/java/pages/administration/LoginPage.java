@@ -1,6 +1,7 @@
-package pages.Administration;
+package pages.administration;
 
 import base.BasePage;
+import helpers.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -17,6 +18,7 @@ public class LoginPage extends BasePage {
     private final By SUBMIT_BUTTON = get("admin.login.submit");
 
     public LoginPage open() {
+        Log.debug("opening page");
         driver.get("https://www.phptravels.net/admin");
         return this;
     }

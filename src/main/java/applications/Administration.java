@@ -1,10 +1,10 @@
 package applications;
 
 import base.BaseApplication;
+import helpers.Log;
 import models.CarExtra;
 import org.openqa.selenium.TimeoutException;
-import org.testng.Assert;
-import pages.Administration.*;
+import pages.administration.*;
 
 import static org.testng.AssertJUnit.assertEquals;
 
@@ -25,6 +25,7 @@ public class Administration extends BaseApplication {
     }
 
     public void login(String email, String password) {
+        Log.debug("Logging from application");
         loginPage.open()
                 .typeEmail(email)
                 .typePassword(password)

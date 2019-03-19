@@ -21,7 +21,7 @@ import java.util.Map;
 
 public class AdminDataProviders extends BaseTest {
 
-    private final String pathToDataFile = "src/main/resources/adminData.xml";
+    private final String pathToDataFile = "src/main/resources/testData/adminData.xml";
 
     @DataProvider(name = "xmlProvider")
     public Object[][] provideXmlData(Method m) throws IOException, SAXException, ParserConfigurationException {
