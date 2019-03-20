@@ -1,6 +1,7 @@
 package pages.administration;
 
 import base.BasePage;
+import helpers.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -16,14 +17,23 @@ public class CarExtraPage extends BasePage {
     private final By PRICE = get("admin.carExtra.price");
 
     public String getName() {
-        return driver.findElement(NAME).getText();
+        Log.debug("START CarExtraPage.getName().");
+        String name = driver.findElement(NAME).getText();
+        Log.debug("END CarExtraPage.getName(). Name: {}.", name);
+        return name;
     }
 
     public String getStatus() {
-        return driver.findElement(STATUS).getText();
+        Log.debug("START CarExtraPage.getStatus().");
+        String status = driver.findElement(STATUS).getText();
+        Log.debug("END CarExtraPage.getStatus(). Status: {}.", status);
+        return status;
     }
 
     public String getPrice() {
-        return driver.findElement(PRICE).getText();
+        Log.debug("START CarExtraPage.getPrice().");
+        String price = driver.findElement(PRICE).getText();
+        Log.debug("END CarExtraPage.getPrice(). Price: {}.", price);
+        return price;
     }
 }

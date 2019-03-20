@@ -1,6 +1,7 @@
 package pages.administration;
 
 import base.BasePage;
+import helpers.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -18,6 +19,7 @@ public class DashboardPage extends BasePage {
     private final String title = "Dashboard";
 
     public boolean isPageOpened() {
+        Log.debug("START/END DashboardPage.isPageOpened().");
         return isElementPresent(DIV_MAIN);
     }
 }

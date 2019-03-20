@@ -17,23 +17,28 @@ public class LoginPage extends BasePage {
     private final By PASSWORD_INPUT = get("admin.login.password");
     private final By SUBMIT_BUTTON = get("admin.login.submit");
 
+    private final String pageURL = "https://www.phptravels.net/admin";
+
     public LoginPage open() {
-        Log.debug("opening page");
-        driver.get("https://www.phptravels.net/admin");
+        Log.debug("START/END LoginPage.open().");
+        driver.get(pageURL);
         return this;
     }
 
     public LoginPage typeEmail(String email) {
+        Log.debug("START/END LoginPage.typeEmail(String email) with params {}.", email);
         driver.findElement(EMAIL_INPUT).sendKeys(email);
         return this;
     }
 
     public LoginPage typePassword(String password) {
+        Log.debug("START/END LoginPage.typePassword(String password) with params {}.", password);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         return this;
     }
 
     public void clickSubmit() {
+        Log.debug("START/END LoginPage.clickSubmit().");
         driver.findElement(SUBMIT_BUTTON).click();
     }
 }

@@ -72,6 +72,7 @@ public class AdminDataProviders extends BaseTest {
 
                 Object[][] returnObject = new Object[1][2];
 
+                //Deserialize CarExtra object
                 NodeList carExtraKey = testElement.getElementsByTagName("carExtra");
                 Element carExtraElement = (Element) carExtraKey.item(0);
                 NodeList carExtraKeys = carExtraElement.getElementsByTagName("*");
@@ -94,6 +95,7 @@ public class AdminDataProviders extends BaseTest {
 
                 returnObject[0][0] = builder.build();
 
+                //HashMap with any other data
                 Map<String, String> otherData = new HashMap<String, String>();
                 NodeList otherKeys = testElement.getElementsByTagName("*");
 

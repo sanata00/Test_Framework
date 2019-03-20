@@ -22,6 +22,9 @@ public class Log {
     public static void error (String message) {
         Log.error(message);
     }
+    public static void error (String message, Object... obj) {
+        Log.error(message, obj);
+    }
 
     //Fatal Level Logs
     public static void fatal (String message) {
@@ -31,5 +34,8 @@ public class Log {
     //Debug Level Logs
     public static void debug (String message) {
         Log.debug(message);
+    }
+    public static void debug(String message, Object... obj) {
+        Log.debug(message, obj);
     }
 }
