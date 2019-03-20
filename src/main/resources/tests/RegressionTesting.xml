@@ -5,6 +5,9 @@
             <include name="regression"/>
         </run>
     </groups>
+    <listeners>
+        <listener class-name="base.Listeners"/>
+    </listeners>
     <parameter name="email" value="admin@phptravels.com"/>
     <parameter name="password" value="demoadmin"/>
     <test name="administration">

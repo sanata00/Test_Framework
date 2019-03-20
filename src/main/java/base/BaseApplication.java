@@ -20,4 +20,8 @@ public class BaseApplication {
         driver.quit();
         driver = null;
     }
+
+    public WebDriver getDriver() {
+        return driver;
+    }
 }

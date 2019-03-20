@@ -12,6 +12,9 @@ public class Log {
     public static void info (String message) {
         Log.info(message);
     }
+    public static void info (String message, Object... obj) {
+        Log.info(message, obj);
+    }
 
     //Warn Level Logs
     public static void warn (String message) {
