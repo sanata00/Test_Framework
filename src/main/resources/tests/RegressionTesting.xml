@@ -6,7 +6,7 @@
         </run>
     </groups>
     <listeners>
-        <listener class-name="base.Listeners"/>
+        <listener class-name="com.epam.reportportal.testng.ReportPortalTestNGListener" />
     </listeners>
     <parameter name="email" value="admin@phptravels.com"/>
     <parameter name="password" value="demoadmin"/>
