@@ -13,13 +13,13 @@ public class DashboardPage extends BasePage {
         super(driver);
     }
 
-    private final By DIV_MAIN = get("admin.dash.main");
+    private final By DIV_CONTENT = get("admin.dash.content");
 
     private final String url = "https://www.phptravels.net/admin";
     private final String title = "Dashboard";
 
     public boolean isPageOpened() {
         Log.debug("START/END DashboardPage.isPageOpened().");
-        return isElementPresent(DIV_MAIN);
+        return isElementPresent(DIV_CONTENT);
     }
 }
