@@ -12,7 +12,7 @@
     <parameter name="password" value="demoadmin"/>
     <test name="administration">
         <classes>
-            <class name="tests.AdminTests" />
+            <class name="tests.AdminTests"/>
         </classes>
     </test>
 </suite>

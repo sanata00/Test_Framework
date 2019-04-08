@@ -8,10 +8,10 @@ import static org.hamcrest.Matchers.*;
 
 public class BackendTests {
 
-    @Test
-    public void getUsers() {
+  @Test
+  public void getUsers() {
 
-        when().get("https://reqres.in/api/users").then().statusCode(200);
+    when().get("https://reqres.in/api/users").then().statusCode(200);
 
-    }
+  }
 }

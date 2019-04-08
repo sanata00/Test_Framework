@@ -9,17 +9,17 @@ import static helpers.Locators.get;
 
 public class DashboardPage extends BasePage {
 
-    public DashboardPage(WebDriver driver) {
-        super(driver);
-    }
+  public DashboardPage(WebDriver driver) {
+    super(driver);
+  }
 
-    private final By DIV_CONTENT = get("admin.dash.content");
+  private final By DIV_CONTENT = get("admin.dash.content");
 
-    private final String url = "https://www.phptravels.net/admin";
-    private final String title = "Dashboard";
+  private final String url = "https://www.phptravels.net/admin";
+  private final String title = "Dashboard";
 
-    public boolean isPageOpened() {
-        Log.debug("START/END DashboardPage.isPageOpened().");
-        return isElementPresent(DIV_CONTENT);
-    }
+  public boolean isPageOpened() {
+    Log.debug("START/END DashboardPage.isPageOpened().");
+    return isElementPresent(DIV_CONTENT);
+  }
 }

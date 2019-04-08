@@ -21,102 +21,102 @@ import java.util.Map;
 
 public class AdminDataProviders extends BaseTest {
 
-    private final String pathToDataFile = "src/main/resources/testData/adminData.xml";
+  private final String pathToDataFile = "src/main/resources/testData/adminData.xml";
 
-    @DataProvider(name = "xmlProvider")
-    public Object[][] provideXmlData(Method m) throws IOException, SAXException, ParserConfigurationException {
-        String methodName = m.getName();
+  @DataProvider(name = "xmlProvider")
+  public Object[][] provideXmlData(Method m) throws IOException, SAXException, ParserConfigurationException {
+    String methodName = m.getName();
 
-        File inputFile = new File(pathToDataFile);
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document doc = dBuilder.parse(inputFile);
-        doc.getDocumentElement().normalize();
-        NodeList tests = doc.getElementsByTagName("test");
+    File inputFile = new File(pathToDataFile);
+    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+    Document doc = dBuilder.parse(inputFile);
+    doc.getDocumentElement().normalize();
+    NodeList tests = doc.getElementsByTagName("test");
 
-        for (int i = 0; i < tests.getLength(); i++) {
-            Node test = tests.item(i);
-            Element testElement = (Element) test;
-            if (testElement.getAttribute("name").equals(methodName)){
-                NodeList keys = testElement.getElementsByTagName("*");
+    for (int i = 0; i < tests.getLength(); i++) {
+      Node test = tests.item(i);
+      Element testElement = (Element) test;
+      if (testElement.getAttribute("name").equals(methodName)) {
+        NodeList keys = testElement.getElementsByTagName("*");
 
-                Object[][] returnObject = new Object[1][keys.getLength()];
+        Object[][] returnObject = new Object[1][keys.getLength()];
 
-                for (int j=0; j<keys.getLength(); j++) {
-                    Node key = keys.item(j);
-                    Element keyElement = (Element) key;
-                    returnObject[0][j] = keyElement.getAttribute("value");
-                }
-                return returnObject;
-            }
+        for (int j = 0; j < keys.getLength(); j++) {
+          Node key = keys.item(j);
+          Element keyElement = (Element) key;
+          returnObject[0][j] = keyElement.getAttribute("value");
         }
-
-        return new Object[][]{};
+        return returnObject;
+      }
     }
 
-    @DataProvider(name = "carExtraProvider")
-    public Object[][] provideCarExtra(Method method) throws ParserConfigurationException, IOException, SAXException {
-        String methodName = method.getName();
+    return new Object[][]{};
+  }
 
-        File inputFile = new File(pathToDataFile);
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document doc = dBuilder.parse(inputFile);
-        doc.getDocumentElement().normalize();
-        NodeList tests = doc.getElementsByTagName("test");
+  @DataProvider(name = "carExtraProvider")
+  public Object[][] provideCarExtra(Method method) throws ParserConfigurationException, IOException, SAXException {
+    String methodName = method.getName();
 
-        for (int i = 0; i < tests.getLength(); i++) {
-            Node test = tests.item(i);
-            Element testElement = (Element) test;
-            if (testElement.getAttribute("name").equals(methodName)){
+    File inputFile = new File(pathToDataFile);
+    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+    Document doc = dBuilder.parse(inputFile);
+    doc.getDocumentElement().normalize();
+    NodeList tests = doc.getElementsByTagName("test");
 
-                Object[][] returnObject = new Object[1][2];
+    for (int i = 0; i < tests.getLength(); i++) {
+      Node test = tests.item(i);
+      Element testElement = (Element) test;
+      if (testElement.getAttribute("name").equals(methodName)) {
 
-                //Deserialize CarExtra object
-                NodeList carExtraKey = testElement.getElementsByTagName("carExtra");
-                Element carExtraElement = (Element) carExtraKey.item(0);
-                NodeList carExtraKeys = carExtraElement.getElementsByTagName("*");
+        Object[][] returnObject = new Object[1][2];
 
-                CarExtra.Builder builder = CarExtra.newEntity();
+        //Deserialize CarExtra object
+        NodeList carExtraKey = testElement.getElementsByTagName("carExtra");
+        Element carExtraElement = (Element) carExtraKey.item(0);
+        NodeList carExtraKeys = carExtraElement.getElementsByTagName("*");
 
-                for (int j=0; j < carExtraKeys.getLength(); j++) {
-                    Node key = carExtraKeys.item(j);
-                    Element keyElement = (Element) key;
-                    String tagName = keyElement.getTagName();
-                    String value = keyElement.getAttribute("value");
-                    if (tagName.equals("name")) {
-                        builder = builder.withName(value);
-                    } else if (tagName.equals("status")) {
-                        builder = builder.withStatus(value);
-                    } else if (tagName.equals("price")) {
-                        builder = builder.withPrice(value);
-                    }
-                }
+        CarExtra.Builder builder = CarExtra.newEntity();
 
-                returnObject[0][0] = builder.build();
-
-                //HashMap with any other data
-                Map<String, String> otherData = new HashMap<String, String>();
-                NodeList otherKeys = testElement.getElementsByTagName("*");
-
-                for (int k=0; k<otherKeys.getLength(); k++) {
-                    Node key = otherKeys.item(k);
-                    Element keyElement = (Element) key;
-
-                    if (keyElement.getTagName().equals("carExtra")) {
-                        continue;
-                    }
-
-                    Element parentNode = (Element) key.getParentNode();
-                    if (parentNode.getTagName().equals("carExtra")) {
-                        continue;
-                    }
-                    otherData.put(keyElement.getTagName(), keyElement.getAttribute("value"));
-                }
-                returnObject[0][1] = otherData;
-                return returnObject;
-            }
+        for (int j = 0; j < carExtraKeys.getLength(); j++) {
+          Node key = carExtraKeys.item(j);
+          Element keyElement = (Element) key;
+          String tagName = keyElement.getTagName();
+          String value = keyElement.getAttribute("value");
+          if (tagName.equals("name")) {
+            builder = builder.withName(value);
+          } else if (tagName.equals("status")) {
+            builder = builder.withStatus(value);
+          } else if (tagName.equals("price")) {
+            builder = builder.withPrice(value);
+          }
         }
-        return new Object[][]{};
+
+        returnObject[0][0] = builder.build();
+
+        //HashMap with any other data
+        Map<String, String> otherData = new HashMap<String, String>();
+        NodeList otherKeys = testElement.getElementsByTagName("*");
+
+        for (int k = 0; k < otherKeys.getLength(); k++) {
+          Node key = otherKeys.item(k);
+          Element keyElement = (Element) key;
+
+          if (keyElement.getTagName().equals("carExtra")) {
+            continue;
+          }
+
+          Element parentNode = (Element) key.getParentNode();
+          if (parentNode.getTagName().equals("carExtra")) {
+            continue;
+          }
+          otherData.put(keyElement.getTagName(), keyElement.getAttribute("value"));
+        }
+        returnObject[0][1] = otherData;
+        return returnObject;
+      }
     }
+    return new Object[][]{};
+  }
 }
