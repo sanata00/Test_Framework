@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="backend">
+    <listeners>
+        <listener class-name="base.Listeners"/>
+    </listeners>
+    <test name="users">
+        <classes>
+            <class name="tests.BackendTests"/>
+        </classes>
+    </test>
+</suite>
